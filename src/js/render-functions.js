@@ -47,11 +47,9 @@ let galleryItems =
 
 export function fillGalleryWithImages(images) {
   gallery.insertAdjacentHTML('beforeend', galleryItems(images));
-  initSimpleLightbox();
   refreshLightbox();
 }
 
-export function initSimpleLightbox() {
   // noinspection JSValidateTypes
   lightbox = new SimpleLightbox('.gallery a', {
     captions: true,
@@ -59,7 +57,6 @@ export function initSimpleLightbox() {
     captionPosition: 'bottom',
     captionsData: 'alt'
   });
-}
 
 export function refreshLightbox() {
   lightbox.refresh();
