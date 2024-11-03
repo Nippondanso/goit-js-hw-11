@@ -35,10 +35,10 @@ form.addEventListener('submit', (e) => {
     .then(data => {
       if (data['hits'].length < 1) {
         iziToast.warning({
-          position: 'topRight', message: 'Sorry, there are no images matching your search query. Please try again!',
+          position: 'topRight',
+          message: 'Sorry, there are no images matching your search query. Please try again!',
         });
       }
-      toggleLoader();
       render.fillGalleryWithImages(data['hits']);
     })
     .catch(error => {
@@ -46,7 +46,11 @@ form.addEventListener('submit', (e) => {
         position: 'topRight', message: 'Query failed!',
       });
       throw new Error(error.message);
-    });
+    })
+    .finally(() => {
+        toggleLoader();
+      }
+    );
 
   form.reset();
 });
