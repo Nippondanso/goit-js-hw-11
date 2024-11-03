@@ -20,7 +20,7 @@ let galleryItems =
           <img
             class="gallery-image"
             src="${item['previewURL']}"
-            alt="${item.description}"
+            alt="${item['tags']}"
           />
           <span class="gallery-legend">
              <div class="gallery-legend-item">
@@ -53,7 +53,12 @@ export function fillGalleryWithImages(images) {
 
 export function initSimpleLightbox() {
   // noinspection JSValidateTypes
-  lightbox = new SimpleLightbox('.gallery a', {});
+  lightbox = new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionDelay: 250,
+    captionPosition: 'bottom',
+    captionsData: 'alt'
+  });
 }
 
 export function refreshLightbox() {
